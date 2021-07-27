@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../redux/todoSlice";
+import { addTodo, addTodoAsync } from "../redux/todoSlice";
 const AddTodoForm = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
@@ -8,11 +8,13 @@ const AddTodoForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     // console.log("user entered: " + value);
+    // if (value) {
     dispatch(
-      addTodo({
+      addTodoAsync({
         title: value,
       })
     );
+
     setValue("");
   };
 
